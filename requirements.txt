@@ -1,0 +1,12 @@
+# Dependencias base ja instaladas no ambiente (Python 3.11+ / 3.14)
+PyYAML>=6.0
+requests>=2.31.0
+
+# Dependencias opcionais (o backend possui implementacao nativa com biblioteca padrao
+# caso estes pacotes nao estejam instalados no ambiente local)
+# fastapi>=0.110.0
+# uvicorn>=0.29.0
+# python-telegram-bot>=21.0
+# google-genai>=0.3.0
+# rank-bm25>=0.2.2
+# pydantic>=2.7.0
