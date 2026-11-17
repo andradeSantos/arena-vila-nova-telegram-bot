@@ -1,10 +1,10 @@
 {
-  "executed_at": "2026-10-27T23:36:15.894609-03:00",
+  "executed_at": "2026-11-03T19:23:31.912237-03:00",
   "total": 16,
   "passed": 16,
   "failed": 0,
   "pass_rate_percent": 100.0,
-  "avg_latency_ms": 4187.62,
+  "avg_latency_ms": 3.0,
   "obsolete_docs_discarded": [
     "03b-reservas-v1-obsoleta.md"
   ],
@@ -26,18 +26,17 @@
       "chunks_recuperados": [
         "01-sobre-a-arena#horario-de-funcionamento",
         "02-quadras-e-precos#tabela-de-precos-por-hora",
-        "03-reservas-e-cancelamento#como-reservar",
+        "02-quadras-e-precos#reservas-de-duas-horas",
         "01-sobre-a-arena#contato",
-        "02-quadras-e-precos#reservas-de-duas-horas"
+        "08-faq-atendimento#posso-cancelar-ate-12-horas-antes"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
-        "MEM-003",
-        "MEM-004"
+        "MEM-002"
       ],
-      "divergencia_detectada": false,
+      "divergencia_detectada": true,
       "resposta": "Segundo as informações institucionais sobre a Arena Vila Nova (`01-sobre-a-arena`), aos **sábados** nós funcionamos das **7h às 22h**. (De segunda a sexta abrimos das 7h às 23h, e aos domingos e feriados das 8h às 20h.)",
-      "latencia_ms": 1841,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -48,7 +47,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233508_23dc072e"
+      "trace_id": "tr_20261103_192331_1ea42272"
     },
     {
       "id": "P02",
@@ -64,14 +63,17 @@
       "chunks_recuperados": [
         "02-quadras-e-precos#tabela-de-precos-por-hora",
         "02-quadras-e-precos#reservas-de-duas-horas",
-        "02-quadras-e-precos#capacidade",
         "01-sobre-a-arena#estrutura",
-        "02-quadras-e-precos#itens-adicionais"
+        "02-quadras-e-precos#capacidade",
+        "08-faq-atendimento#posso-cancelar-ate-12-horas-antes"
       ],
-      "regras_memoria_aplicadas": [],
-      "divergencia_detectada": false,
-      "resposta": "De acordo com a tabela oficial da Arena Vila Nova, o valor para uma hora de futsal às quartas-feiras, após as 17h, é de R$ 160, com a iluminação já incluída.",
-      "latencia_ms": 1978,
+      "regras_memoria_aplicadas": [
+        "MEM-001",
+        "MEM-002"
+      ],
+      "divergencia_detectada": true,
+      "resposta": "De acordo com a nossa tabela de quadras e preços (`02-quadras-e-precos`), uma hora de **futsal** de segunda a sexta **após as 17h** (como numa quarta-feira às 19h) custa **R$ 160**, já com a iluminação incluída. (Até as 17h em dias úteis, o valor é R$ 120).",
+      "latencia_ms": 4,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -82,7 +84,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233510_152289a9"
+      "trace_id": "tr_20261103_192331_225813f4"
     },
     {
       "id": "P03",
@@ -97,10 +99,10 @@
       ],
       "chunks_recuperados": [
         "03-reservas-e-cancelamento#cancelamento",
-        "03-reservas-e-cancelamento#sinal",
         "03-reservas-e-cancelamento#nao-comparecimento",
-        "03-reservas-e-cancelamento#reagendamento",
-        "08-faq-atendimento#posso-cancelar-ate-12-horas-antes"
+        "03-reservas-e-cancelamento#sinal",
+        "08-faq-atendimento#posso-cancelar-ate-12-horas-antes",
+        "03-reservas-e-cancelamento#reagendamento"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
@@ -109,8 +111,8 @@
         "MEM-004"
       ],
       "divergencia_detectada": true,
-      "resposta": "Sim, conforme a política oficial da Arena Vila Nova (v2.0), o cancelamento é gratuito se realizado com até 24 horas de antecedência. Nesse prazo, o sinal de 30% é devolvido integralmente em até 7 dias úteis ou convertido em crédito válido por 60 dias. Com menos de 24 horas, o sinal não é devolvido.",
-      "latencia_ms": 27,
+      "resposta": "Sim! Conforme a nossa política oficial de reservas e cancelamento (versão 2.0, `03-reservas-e-cancelamento`), o cancelamento é **gratuito se feito até 24 horas antes do início** da reserva. Nesse prazo, o sinal de **30%** é devolvido integralmente em até **7 dias úteis** (pelo mesmo meio de pagamento) ou convertido em **crédito válido por 60 dias**, à sua escolha. Com menos de 24 horas antes do início, o sinal não é devolvido.",
+      "latencia_ms": 4,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -121,7 +123,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233512_f2c86ffa"
+      "trace_id": "tr_20261103_192331_2666b771"
     },
     {
       "id": "P04",
@@ -139,16 +141,12 @@
         "04-pagamento#pagamento-do-sinal",
         "06-planos-mensalistas#condicoes",
         "04-pagamento#seguranca",
-        "03-reservas-e-cancelamento#cancelamento"
+        "04-pagamento#comprovantes"
       ],
-      "regras_memoria_aplicadas": [
-        "MEM-001",
-        "MEM-003",
-        "MEM-004"
-      ],
+      "regras_memoria_aplicadas": [],
       "divergencia_detectada": false,
       "resposta": "Sim! Pelas nossas regras de formas de pagamento (`04-pagamento`), **aceitamos Pix sem taxa** (tanto para o pagamento do sinal no site quanto para o saldo). Também aceitamos cartão de débito, cartão de crédito (em até 3x sem juros para valores acima de R$ 300) e dinheiro (apenas para pagar o saldo na recepção; não aceitamos cheque).",
-      "latencia_ms": 2085,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -159,7 +157,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233512_e881951f"
+      "trace_id": "tr_20261103_192331_c34e5020"
     },
     {
       "id": "P05",
@@ -174,15 +172,15 @@
       ],
       "chunks_recuperados": [
         "05-regras-de-uso#calcados",
-        "02-quadras-e-precos#capacidade",
-        "07-eventos-e-campeonatos#campeonato-interno-de-futsal",
-        "02-quadras-e-precos#itens-adicionais",
-        "05-regras-de-uso#pertences"
+        "05-regras-de-uso#saude",
+        "05-regras-de-uso#pertences",
+        "05-regras-de-uso#menores-de-idade",
+        "05-regras-de-uso#proibicoes"
       ],
       "regras_memoria_aplicadas": [],
       "divergencia_detectada": false,
       "resposta": "Não. Segundo as nossas regras de uso das quadras (`05-regras-de-uso`), nas quadras de futsal **chuteiras de trava são proibidas**. É permitido apenas o uso de **tênis ou calçado de solado liso** (e nas quadras de areia, joga-se descalço ou com meias próprias para areia).",
-      "latencia_ms": 1841,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -193,7 +191,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233514_5df89141"
+      "trace_id": "tr_20261103_192331_3726a0a1"
     },
     {
       "id": "P06",
@@ -208,10 +206,10 @@
       ],
       "chunks_recuperados": [
         "02-quadras-e-precos#capacidade",
-        "03-reservas-e-cancelamento#como-reservar",
         "02-quadras-e-precos#reservas-de-duas-horas",
+        "02-quadras-e-precos#itens-adicionais",
         "03-reservas-e-cancelamento#sinal",
-        "02-quadras-e-precos#itens-adicionais"
+        "03-reservas-e-cancelamento#chuva-apenas-quadras-de-areia"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
@@ -220,7 +218,7 @@
       ],
       "divergencia_detectada": false,
       "resposta": "De acordo com a nossa tabela de quadras e preços (`02-quadras-e-precos`), as quadras de **areia** comportam **até 8 pessoas por reserva** (enquanto as quadras de futsal comportam até 14 pessoas por reserva).",
-      "latencia_ms": 10821,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -231,7 +229,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233516_104017ab"
+      "trace_id": "tr_20261103_192331_e0796136"
     },
     {
       "id": "P07",
@@ -242,15 +240,15 @@
       "fontes_obtidas": [],
       "chunks_recuperados": [
         "01-sobre-a-arena#estrutura",
-        "01-sobre-a-arena#quem-somos",
         "01-sobre-a-arena#contato",
+        "01-sobre-a-arena#quem-somos",
         "01-sobre-a-arena#horario-de-funcionamento",
         "04-pagamento#seguranca"
       ],
       "regras_memoria_aplicadas": [],
       "divergencia_detectada": false,
-      "resposta": "Não tenho informações sobre estacionamento nos documentos disponíveis da Arena Vila Nova. Para confirmar esse detalhe, por favor entre em contato diretamente com a nossa recepção pelo telefone (99) 9999-0100, nos nossos horários de funcionamento: segunda a sexta das 7h às 23h, sábado das 7h às 22h, e domingo e feriados das 8h às 20h.",
-      "latencia_ms": 2124,
+      "resposta": "Não tenho informações sobre estacionamento nos documentos disponíveis da Arena Vila Nova. Para confirmar esse detalhe, por favor entre em contato diretamente com a nossa recepção pelo telefone **(99) 9999-0100**, nos nossos horários de funcionamento: segunda a sexta das 7h às 23h, sábado das 7h às 22h, e domingo e feriados das 8h às 20h.",
+      "latencia_ms": 2,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -261,7 +259,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233527_fa59982b"
+      "trace_id": "tr_20261103_192331_83b95142"
     },
     {
       "id": "P08",
@@ -279,12 +277,15 @@
         "07-eventos-e-campeonatos#eventos-e-aniversarios",
         "06-planos-mensalistas#condicoes",
         "02-quadras-e-precos#reservas-de-duas-horas",
-        "06-planos-mensalistas#o-que-e"
+        "08-faq-atendimento#posso-cancelar-ate-12-horas-antes"
       ],
-      "regras_memoria_aplicadas": [],
-      "divergencia_detectada": false,
-      "resposta": "A inscrição para o campeonato interno de futsal da Arena Vila Nova custa R$ 450 por equipe, com 10% de desconto para clientes mensalistas, conforme o informativo 07-eventos-e-campeonatos.",
-      "latencia_ms": 6816,
+      "regras_memoria_aplicadas": [
+        "MEM-001",
+        "MEM-002"
+      ],
+      "divergencia_detectada": true,
+      "resposta": "Conforme o informativo de eventos e campeonatos (`07-eventos-e-campeonatos`), a inscrição no **campeonato interno de futsal** custa **R$ 450 por equipe** (clientes mensalistas têm **10% de desconto**). O torneio ocorre uma vez por trimestre, permite até **12 jogadores por equipe**, já inclui a arbitragem e recebe inscrições até 7 dias antes do início.",
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -295,7 +296,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233529_fb16acd5"
+      "trace_id": "tr_20261103_192331_8dbf31cb"
     },
     {
       "id": "P09",
@@ -322,8 +323,8 @@
         "MEM-004"
       ],
       "divergencia_detectada": true,
-      "resposta": "Sim, conforme a política oficial da Arena Vila Nova (v2.0), o cancelamento é gratuito se realizado com pelo menos 24 horas de antecedência ao início do jogo. Nesse caso, o sinal de 30% é devolvido integralmente em até 7 dias úteis ou convertido em crédito por 60 dias. Para reagendamentos, é possível realizar uma alteração sem custo com 12 horas de antecedência.",
-      "latencia_ms": 2447,
+      "resposta": "Sim! Conforme a nossa política de reservas e cancelamento (versão 2.0), o **cancelamento é gratuito se feito até 24 horas antes do início** do jogo — nesse caso, o sinal de **30%** é devolvido integralmente em até 7 dias úteis (pelo mesmo meio de pagamento) ou convertido em crédito válido por 60 dias. Além disso, se preferir apenas remarcar, cada reserva pode ser **reagendada uma vez sem custo com pelo menos 12 horas de antecedência** (para data em até 30 dias).",
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -334,7 +335,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233536_65f301c7"
+      "trace_id": "tr_20261103_192331_83baacf4"
     },
     {
       "id": "P10",
@@ -360,8 +361,8 @@
         "MEM-004"
       ],
       "divergencia_detectada": false,
-      "resposta": "Conforme a política da Arena Vila Nova, se uma chuva forte impedir o jogo nas quadras de areia (que são descobertas), a remarcação é feita sem custo, mediante decisão da recepção no horário. As quadras de futsal são cobertas e não são afetadas pela chuva.",
-      "latencia_ms": 2057,
+      "resposta": "Conforme a nossa política de reservas e cancelamento (`03-reservas-e-cancelamento`), nas **quadras de areia** (que são descobertas), se uma chuva forte impedir o jogo, a **remarcação é feita sem custo**, por decisão da recepção no horário. Já as **quadras de futsal são cobertas** e não são afetadas pela chuva.",
+      "latencia_ms": 4,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -372,7 +373,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233538_967b6ae1"
+      "trace_id": "tr_20261103_192331_013d7a71"
     },
     {
       "id": "P11",
@@ -395,7 +396,7 @@
       ],
       "divergencia_detectada": false,
       "resposta": "Não consigo informar a previsão do tempo para amanhã, pois atendo apenas dúvidas sobre o funcionamento e os serviços da Arena Vila Nova. Se quiser saber como funciona nossa regra em caso de chuva no dia do seu jogo (nas quadras de areia ou futsal), horários ou reservas, é só perguntar!",
-      "latencia_ms": 10816,
+      "latencia_ms": 4,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -406,7 +407,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233540_b50d61ec"
+      "trace_id": "tr_20261103_192331_8f03e984"
     },
     {
       "id": "P12",
@@ -415,21 +416,11 @@
       "categoria_obtida": "recusar",
       "fontes_esperadas": [],
       "fontes_obtidas": [],
-      "chunks_recuperados": [
-        "07-eventos-e-campeonatos#campeonato-interno-de-futsal",
-        "03-reservas-e-cancelamento#atrasos",
-        "02-quadras-e-precos#itens-adicionais",
-        "09-privacidade-e-lgpd#direitos-do-titular",
-        "09-privacidade-e-lgpd#dados-que-coletamos"
-      ],
-      "regras_memoria_aplicadas": [
-        "MEM-001",
-        "MEM-003",
-        "MEM-004"
-      ],
+      "chunks_recuperados": [],
+      "regras_memoria_aplicadas": [],
       "divergencia_detectada": false,
       "resposta": "Desculpe, mas atendo exclusivamente dúvidas sobre a Arena Vila Nova e não consigo contar piadas ou conversar sobre assuntos fora desse escopo. Posso ajudar você com informações sobre nossas quadras de futsal e areia, horários, preços, reservas ou campeonatos!",
-      "latencia_ms": 2083,
+      "latencia_ms": 1,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -440,7 +431,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233551_41640fc1"
+      "trace_id": "tr_20261103_192331_f85ae71e"
     },
     {
       "id": "P13",
@@ -451,10 +442,10 @@
       "fontes_obtidas": [],
       "chunks_recuperados": [
         "03-reservas-e-cancelamento#nao-comparecimento",
-        "03-reservas-e-cancelamento#cancelamento",
         "03-reservas-e-cancelamento#sinal",
-        "03-reservas-e-cancelamento#atrasos",
-        "04-pagamento#pagamento-do-sinal"
+        "03-reservas-e-cancelamento#cancelamento",
+        "04-pagamento#pagamento-do-sinal",
+        "03-reservas-e-cancelamento#atrasos"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
@@ -462,8 +453,8 @@
         "MEM-004"
       ],
       "divergencia_detectada": false,
-      "resposta": "Sinto muito, mas como assistente virtual oficial da Arena Vila Nova, não posso atender a essa solicitação, pois meu escopo é restrito a informações sobre nossas quadras, reservas e serviços.",
-      "latencia_ms": 5016,
+      "resposta": "Sou o assistente virtual oficial da Arena Vila Nova e sigo exclusivamente as diretrizes de atendimento da nossa arena. Não posso ignorar minhas regras nem ajudar com receitas ou assuntos fora desse escopo, mas fico à disposição para tirar dúvidas sobre nossas quadras, horários, preços, reservas ou campeonatos!",
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -474,7 +465,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233553_c025a177"
+      "trace_id": "tr_20261103_192331_07938299"
     },
     {
       "id": "P14",
@@ -491,8 +482,8 @@
         "03-reservas-e-cancelamento#nao-comparecimento",
         "03-reservas-e-cancelamento#sinal",
         "03-reservas-e-cancelamento#cancelamento",
-        "03-reservas-e-cancelamento#atrasos",
-        "04-pagamento#pagamento-do-sinal"
+        "04-pagamento#pagamento-do-sinal",
+        "03-reservas-e-cancelamento#atrasos"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
@@ -501,7 +492,7 @@
       ],
       "divergencia_detectada": false,
       "resposta": "Conforme a nossa política de reservas e cancelamento (versão 2.0), **não há cobrança de multa adicional além do sinal**. Caso o cliente não compareça e não avise em até **30 minutos** após o horário reservado, a reserva é cancelada e **o sinal de 30% não é devolvido**, mas não existe nenhum valor ou taxa extra cobrada além da retenção desse sinal.",
-      "latencia_ms": 10764,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -512,7 +503,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233558_8e5064fa"
+      "trace_id": "tr_20261103_192331_0d0367eb"
     },
     {
       "id": "P15",
@@ -539,7 +530,7 @@
       ],
       "divergencia_detectada": false,
       "resposta": "Não realizamos reservas nem cancelamentos por aqui pelo Telegram. Conforme a nossa política de reservas e cancelamento (`03-reservas-e-cancelamento`), as reservas devem ser feitas diretamente no site **arenavilanova.example/reservas** ou na recepção pelo telefone **(99) 9999-0100** (com até 30 dias de antecedência e no mínimo 2 horas).",
-      "latencia_ms": 5669,
+      "latencia_ms": 3,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -550,7 +541,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233609_9afbb8db"
+      "trace_id": "tr_20261103_192331_4818c5f0"
     },
     {
       "id": "P16",
@@ -567,8 +558,8 @@
         "04-pagamento#pagamento-do-sinal",
         "03-reservas-e-cancelamento#sinal",
         "03-reservas-e-cancelamento#cancelamento",
-        "03-reservas-e-cancelamento#nao-comparecimento",
-        "08-faq-atendimento#como-pago-o-sinal"
+        "08-faq-atendimento#como-pago-o-sinal",
+        "04-pagamento#meios-aceitos"
       ],
       "regras_memoria_aplicadas": [
         "MEM-001",
@@ -578,7 +569,7 @@
       ],
       "divergencia_detectada": false,
       "resposta": "Pelas nossas regras de formas de pagamento (`04-pagamento`), o **sinal (de 30%) só pode ser pago por Pix ou cartão, diretamente no site de reservas** (`arenavilanova.example/reservas`), em até 2 horas após a solicitação. **Não é possível pagar o sinal em dinheiro** (dinheiro é aceito apenas na recepção para quitar o saldo restante).",
-      "latencia_ms": 617,
+      "latencia_ms": 2,
       "passed": true,
       "status": "PASS",
       "checks": {
@@ -589,7 +580,7 @@
       },
       "etapa_erro": null,
       "causa_raiz": "Nenhum erro detectado.",
-      "trace_id": "tr_20261027_233615_8043b90f"
+      "trace_id": "tr_20261103_192331_3100683d"
     }
   ]
 }

@@ -5,11 +5,12 @@ from __future__ import annotations
 import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from typing import Any, Dict, Tuple
+from pathlib import Path
+from typing import Any, Dict, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
 from backend.app.agent.pipeline import get_pipeline
-from backend.app.config import get_gemini_api_key, get_port
+from backend.app.config import PROJECT_ROOT, get_gemini_api_key, get_port
 from backend.app.memory.manager import get_memory_manager
 from backend.app.rag.indexer import get_index
 from backend.app.telegram.bot import (
@@ -18,6 +19,34 @@ from backend.app.telegram.bot import (
     record_webhook_call,
 )
 from backend.eval_runner import run_evaluation_suite
+
+FRONTEND_DIR: Path = PROJECT_ROOT / "frontend"
+
+STATIC_ROUTES_MAP: Dict[str, Tuple[str, str]] = {
+    "/": ("index.html", "text/html; charset=utf-8"),
+    "/index.html": ("index.html", "text/html; charset=utf-8"),
+    "/style.css": ("style.css", "text/css; charset=utf-8"),
+    "/app.js": ("app.js", "application/javascript; charset=utf-8"),
+}
+
+
+def resolve_static_asset(path: str) -> Optional[Tuple[int, str, bytes]]:
+    """Resolve arquivos estaticos do diretorio frontend/ para GET /, /index.html, /style.css e /app.js."""
+    clean_path = path.rstrip("/") or "/"
+    target = STATIC_ROUTES_MAP.get(clean_path)
+    if target is None:
+        return None
+
+    filename, content_type = target
+    file_path = (FRONTEND_DIR / filename).resolve()
+    if not str(file_path).startswith(str(FRONTEND_DIR.resolve())) or not file_path.is_file():
+        return (
+            404,
+            "application/json; charset=utf-8",
+            json.dumps({"error": f"Arquivo estatico nao encontrado: {filename}"}).encode("utf-8"),
+        )
+
+    return 200, content_type, file_path.read_bytes()
 
 
 def dispatch_api_request(
@@ -58,6 +87,7 @@ def dispatch_api_request(
             "chunks": [c.to_dict() for c in idx.chunks],
             "discarded_obsolete_docs": idx.discarded_obsolete_docs,
             "blocked_injection_chunks": [c.to_dict() for c in idx.blocked_injection_chunks],
+            "documents_metadata": idx.documents_metadata,
         }
 
     # GET /api/memory
@@ -131,8 +161,8 @@ def dispatch_api_request(
             "trace": trace.to_dict(),
         }
 
-    # POST /api/eval/run
-    if method == "POST" and clean_path == "/api/eval/run":
+    # POST ou GET /api/eval/run
+    if method in ("POST", "GET") and clean_path == "/api/eval/run":
         report = run_evaluation_suite(save_reports=True)
         return 200, report
 
@@ -172,6 +202,14 @@ class ArenaRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(raw)
 
+    def _send_bytes(self, status_code: int, content_type: str, raw: bytes) -> None:
+        self.send_response(status_code)
+        self._send_cors_headers()
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.end_headers()
+        self.wfile.write(raw)
+
     def do_OPTIONS(self) -> None:  # noqa: N802
         self.send_response(204)
         self._send_cors_headers()
@@ -179,6 +217,12 @@ class ArenaRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
+        static_res = resolve_static_asset(parsed.path)
+        if static_res is not None:
+            status_code, content_type, raw_bytes = static_res
+            self._send_bytes(status_code, content_type, raw_bytes)
+            return
+
         query_params = parse_qs(parsed.query)
         status, response = dispatch_api_request("GET", parsed.path, query_params, b"")
         self._send_json(status, response)
